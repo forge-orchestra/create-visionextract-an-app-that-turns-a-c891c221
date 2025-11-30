@@ -1,0 +1,32 @@
+{
+  "name": "visionextract",
+  "version": "1.0.0",
+  "description": "An app that turns any screenshot into structured data",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "15.0.0",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "typescript": "^5.0.0",
+    "tailwindcss": "^3.0.0",
+    "lucide-react": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/node": "^20.0.0",
+    "autoprefixer": "^10.0.0",
+    "postcss": "^8.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not dead"
+  ]
+}

@@ -1,0 +1,41 @@
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String?
+  screenshots Screenshot[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Screenshot {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  imageUrl    String
+  extractedData Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ExtractedData {
+  id          String   @id @default(uuid())
+  screenshotId String
+  screenshot  Screenshot @relation(fields: [screenshotId], references: [id])
+  data        Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
